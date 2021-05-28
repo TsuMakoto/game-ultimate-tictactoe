@@ -10,8 +10,10 @@ public class Simulator {
     public static void main(String[] args) {
 
         MultiplayerGameRunner gameRunner = new MultiplayerGameRunner();
-        gameRunner.addAgent("julia /app/src/test/ruby/player.jl", "Ruby agent", "/app/src/test/julia/ruby-agent.png");
-        gameRunner.addAgent("julia /app/src/test/julia/player.jl", "Julia agent", "/app/src/test/julia/julia-agent.png");
+        // gameRunner.addAgent(Player1.class);
+        // gameRunner.addAgent("ruby /app/src/test/ruby/player.rb", "Ruby agent", "/app/src/test/julia/ruby-agent.png");
+        gameRunner.addAgent("julia /app/src/test/julia/player.jl", "Julia agent", "assets/julia-agent.png");
+        gameRunner.addAgent("julia /app/src/test/julia/player.jl", "Julia agent", "assets/julia-agent.png");
         // gameRunner.addAgent("python3 /home/user/player.py");
 
         GameResult result = gameRunner.simulate();

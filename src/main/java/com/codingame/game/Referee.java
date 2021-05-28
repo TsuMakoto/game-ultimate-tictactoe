@@ -24,7 +24,7 @@ public class Referee extends AbstractReferee {
     private Action lastAction = null;
     private List<Action> validActions;
     private Random random;
-    
+
     @Override
     public void init() {
         random = new Random(gameManager.getSeed());
@@ -40,7 +40,7 @@ public class Referee extends AbstractReferee {
         } else {
             gameManager.setMaxTurns(9 * 9);
         }
-        
+
         validActions = getValidActions();
     }
 
@@ -72,7 +72,7 @@ public class Referee extends AbstractReferee {
 
         if (gameManager.getLeagueLevel() == 2) {
             smallGrids = new TicTacToeGrid[3][3];
-            
+
             for (int i = -1; i <= 1; i++) {
                 for (int j = -1; j <= 1; j++) {
                     int cellSize = 60;
@@ -90,7 +90,7 @@ public class Referee extends AbstractReferee {
             .setY(1080 / 2)
             .setAnchor(0.5);
     }
-    
+
     private void drawHud() {
         for (Player player : gameManager.getPlayers()) {
             int x = player.getIndex() == 0 ? 280 : 1920 - 280;
@@ -159,7 +159,7 @@ public class Referee extends AbstractReferee {
         // valid actions
         player.sendInputLine(Integer.toString(validActions.size()));
         for (Action action : validActions) {
-            player.sendInputLine(action.toString());    
+            player.sendInputLine(action.toString());
         }
     }
 
@@ -181,7 +181,7 @@ public class Referee extends AbstractReferee {
                     smallGrids[row][col].deactivate();
                 }
             }
-            
+
             if (lastAction != null) {
                 TicTacToeGrid grid = smallGrids[lastAction.row % 3][lastAction.col % 3];
                 for (Action action : grid.getValidActions()) {
@@ -218,7 +218,7 @@ public class Referee extends AbstractReferee {
         if (turn == 0 || turn == 1) {
             gameManager.setTurnMaxTime(1000);
         } else {
-            gameManager.setTurnMaxTime(100);
+            gameManager.setTurnMaxTime(1000);
         }
 
         sendInputs(player, validActions);
