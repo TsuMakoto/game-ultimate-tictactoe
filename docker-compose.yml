@@ -1,0 +1,12 @@
+version: '3'
+services:
+  codingame:
+    container_name: codingame
+    build: .
+    ports:
+      - "3000:80"
+    command: |
+      bash -c "nginx && mvn test-compile && java -cp target/test-classes:target/classes:target/dependency/* Main"
+    volumes:
+      - .:/app
+      - ./server:/etc/nginx/conf.d
