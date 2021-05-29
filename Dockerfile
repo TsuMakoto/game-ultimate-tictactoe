@@ -8,7 +8,7 @@ RUN mvn test-compile
 
 RUN mvn dependency:copy-dependencies
 
-RUN apt-get update && apt-get install -y nginx
+RUN apt-get update && apt-get install -y nginx julia
 
 COPY ./server/default.conf /etc/nginx/conf.d/
 
